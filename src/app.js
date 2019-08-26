@@ -1,16 +1,21 @@
-console.log(process.argv)
 // npm modules
 const path = require ('path')
+console.log(__dirname)
+
 const Express = require ('express')
 const hbs = require ('hbs')
 const geocode = require ("./utils/Geocode")
 const forecast = require ("./utils/Forecast")
 
-// Define paths for Express config
+
 const App = Express()
+const port = process.env.PORT || 3000
+
+
+// Define paths for Express config
 const PublicDirectory = path.join(__dirname, '../Public')
-const ViewsPath = path.join(__dirname,'/Templates/views')
-const PartialsPath = path.join(__dirname, '/Templates/Partials')
+const ViewsPath = path.join(__dirname,'../Templates/views')
+const PartialsPath = path.join(__dirname, '../Templates/Partials')
 
 // Set handlebars engine and views location
 App.set('view engine','hbs')
@@ -101,8 +106,8 @@ App.get('*', (req, res) =>{
 
 
 
-App.listen(3000, () =>{
-    console.log('Server is up on port 3000')
+App.listen(port, () =>{
+    console.log('Server is up on port' + port)
 }) 
 
 

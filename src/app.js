@@ -4,8 +4,8 @@ console.log(__dirname) //For testing purposes
 
 const express = require ('express')
 const hbs = require ('hbs')
-const geocode = require ("./utils/geocode")
-const forecast = require ("./utils/forecast")
+const geocode = require ("/utils/geocode")
+const forecast = require ("/utils/forecast")
 
 
 const app = express()

@@ -1,10 +1,10 @@
 // npm modules
 const path = require ('path')
-//console.log(__dirname) //For testing purposes
+console.log(__dirname) //For testing purposes
 
 const express = require ('express')
 const hbs = require ('hbs')
-const geocode = require ("/utils/geocode")
+const geocode = require ("./utils/geocode")
 const forecast = require ("./utils/forecast")
 
 

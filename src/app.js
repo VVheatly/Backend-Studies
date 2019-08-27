@@ -49,7 +49,7 @@ app.get('/about', (req, res) => {
     })
 })
 
-app.get('/Weather', (req, res) => {
+app.get('/weather', (req, res) => {
     if(!req.query.address) {
         return res.send({
             error: 'Please provide an Address!' 
@@ -88,7 +88,7 @@ app.get ("/Products", (req,res) => {
     })
 })
 
-app.get('/Help/*', (req, res) => {
+app.get('/help/*', (req, res) => {
     res.render ('404', {
         title: '404 Page',
         ErrorMessage: 'Help article not found',

@@ -1,6 +1,6 @@
 const request = require ('request')
 
-const Geocode = (address, callback) => {
+const geocode = (address, callback) => {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token=pk.eyJ1Ijoid2hlYXRseSIsImEiOiJjanphMDd5djEwNWtxM25wcXI1NmR4MXFhIn0.JkIReltO-y5MUAxO1K2qeA&limit=1'
   
     request ({url, json: true}, (error, {body}) => {
@@ -19,4 +19,4 @@ const Geocode = (address, callback) => {
     })
   }
 
-  module.exports = Geocode
+  module.exports = geocode

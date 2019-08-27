@@ -1,54 +1,54 @@
 // npm modules
 const path = require ('path')
-console.log(__dirname)
+//console.log(__dirname) //For testing purposes
 
-const Express = require ('express')
+const express = require ('express')
 const hbs = require ('hbs')
-const geocode = require ("./utils/Geocode")
-const forecast = require ("./utils/Forecast")
+const geocode = require ("./utils/geocode")
+const forecast = require ("./utils/forecast")
 
 
-const App = Express()
+const app = express()
 const port = process.env.PORT || 3000
 
 
 // Define paths for Express config
-const PublicDirectory = path.join(__dirname, '../Public')
-const ViewsPath = path.join(__dirname,'../Templates/views')
-const PartialsPath = path.join(__dirname, '../Templates/partials')
+const publicDirectory = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname,'../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 
 // Set handlebars engine and views location
-App.set('view engine','hbs')
-App.set('views', ViewsPath)
-hbs.registerPartials(PartialsPath)
+app.set('view engine','hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
 // Setup static directory to server
-App.use(Express.static(PublicDirectory))
+app.use(express.static(publicDirectory))
 
 
-App.get('', (req, res) => {
+app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
         name: 'Wheatly'
     })
 })
 
-App.get('/Help', (req,res) => {
-    res.render('Help', {
+app.get('/help', (req,res) => {
+    res.render('help', {
         HelpText: 'Help Text Demo',
         title: 'Help',
         name: 'Wheatly'
     })
 })
 
-App.get('/About', (req, res) => {
+app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Me',
         name: 'Wheatly'
     })
 })
 
-App.get('/Weather', (req, res) => {
+app.get('/Weather', (req, res) => {
     if(!req.query.address) {
         return res.send({
             error: 'Please provide an Address!' 
@@ -74,7 +74,7 @@ App.get('/Weather', (req, res) => {
     })
 })
 
-App.get ("/Products", (req,res) => {
+app.get ("/Products", (req,res) => {
     if(!req.query.search) {
        return res.send({
            Error: 'You must provide a search term'
@@ -87,7 +87,7 @@ App.get ("/Products", (req,res) => {
     })
 })
 
-App.get('/Help/*', (req, res) => {
+app.get('/Help/*', (req, res) => {
     res.render ('404', {
         title: '404 Page',
         ErrorMessage: 'Help article not found',
@@ -95,7 +95,7 @@ App.get('/Help/*', (req, res) => {
     })
 })
 
-App.get('*', (req, res) =>{
+app.get('*', (req, res) =>{
     res.render ('404', {
         title: '404 Page',
         ErrorMessage: 'Page Not Found',
@@ -105,7 +105,7 @@ App.get('*', (req, res) =>{
 
 
 
-App.listen(port, () =>{
+app.listen(port, () =>{
     console.log('Server is up on port' + port)
 }) 
 

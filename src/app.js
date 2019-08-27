@@ -26,6 +26,13 @@ hbs.registerPartials(PartialsPath)
 App.use(Express.static(PublicDirectory))
 
 
+App.get('', (req, res) => {
+    res.render('index', {
+        title: 'Weather App',
+        name: 'Wheatly'
+    })
+})
+
 App.get('/Help', (req,res) => {
     res.render('Help', {
         HelpText: 'Help Text Demo',
@@ -37,14 +44,6 @@ App.get('/Help', (req,res) => {
 App.get('/About', (req, res) => {
     res.render('about', {
         title: 'About Me',
-        name: 'Wheatly'
-    })
-})
-
-
-App.get('', (req, res) => {
-    res.render('index', {
-        title: 'Weather App',
         name: 'Wheatly'
     })
 })

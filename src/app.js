@@ -35,7 +35,7 @@ app.get('', (req, res) => {
 
 app.get('/help', (req,res) => {
     res.render('help', {
-        HelpText: 'Help Text Demo',
+        constructionText: 'Under Construction!!!',
         title: 'Help',
         name: 'Wheatly'
     })
@@ -43,6 +43,7 @@ app.get('/help', (req,res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
+        constructionText: 'Under Construction!!!',
         title: 'About Me',
         name: 'Wheatly'
     })
